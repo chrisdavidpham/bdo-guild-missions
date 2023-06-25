@@ -1,5 +1,5 @@
 import { DiscordClientService } from './services/discord-client-service';
-import { GuildMissionCommand } from './types/guild-mission-command';
+import { CommandName } from './types/command-name';
 
 DiscordClientService.client.on('ready', () => {
     console.log(`Logged in as ${DiscordClientService.client.user?.tag}`);
@@ -12,13 +12,13 @@ DiscordClientService.client.on('interactionCreate', async interaction => {
 
     switch(interaction.commandName)
     {
-        case GuildMissionCommand.Help:
+        case CommandName.Help:
             await interaction.reply({
                 content: 'I\'m still under development, but you may explore my commands',
                 ephemeral: true
             });
             break;
-        case GuildMissionCommand.Mission:
+        case CommandName.Mission:
             console.log('command options type: ' + typeof interaction.options);
             console.log('options: ' + interaction.options);
             console.log('options.data: ' + interaction.options.data);

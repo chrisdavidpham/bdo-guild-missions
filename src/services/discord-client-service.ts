@@ -1,5 +1,5 @@
-import { Client, GatewayIntentBits, RequestData, Routes } from "discord.js";
-import { GuildMissionCommandBuilder } from "../builders/guild-mission-command-builder";
+import { Client, GatewayIntentBits, RequestData, Routes } from 'discord.js';
+import { GuildMissionCommandBuilder } from '../builders/guild-mission-command-builder';
 
 export namespace DiscordClientService {
     export const client = new Client({

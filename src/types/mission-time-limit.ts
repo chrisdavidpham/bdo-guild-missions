@@ -1,0 +1,16 @@
+export enum MissionTimeLimit {
+    Unknown = 'unknown',
+    OneHour = '1h',
+    OneHourThirtyMintutes = '1h 30m',
+    TwoHours = '2h',
+    TwoHoursThirtyMintutes = '2h 30m',
+    ThreeHours = '3h',
+    ThreeHoursTenMinutes = '3h 10m',
+    ThreeHoursThirtyMintutes = '3h 30m',
+    ThreeHoursFortyMinutes = '3h 40m',
+    FourHours = '4h',
+    FourHoursTwentyMinutes = '4h 20m',
+    FiveHours = '5h',
+    SixHours = '6h',
+    SevenHours = '7h',
+}
