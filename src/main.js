@@ -9,17 +9,15 @@ function setupCommands() {
         description: 'Displays commands and usage'
     }];
 
-    const rest = new REST({ version: '9' }).setToken('token');
+    const rest = new REST({ version: '9' }).setToken(process.env.BOT_TOKEN);
 
     (async () => {
         try {
             console.log('Started refreshing application (/) commands.');
-
             await rest.put(
                 Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
-                { body: commands },
+                { body: commands }
             );
-
             console.log('Successfully reloaded application (/) commands.');
         } catch (error) {
             console.error(error);
@@ -48,3 +46,4 @@ discordClient.on('interactionCreate', async interaction => {
 });
 
 discordClient.login(process.env.BOT_TOKEN);
+
