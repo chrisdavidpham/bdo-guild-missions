@@ -1,8 +1,5 @@
 {
   "dependencies": {
     "discord.js": "^14.3.0"
-  },
-  "scripts": {
-    "start": "node ./src/main.js"
   }
 }
