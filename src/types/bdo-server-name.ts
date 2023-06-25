@@ -1,8 +1,8 @@
-type BdoServerKey = keyof Omit<typeof BdoServerName, 'parse'>;
+// type BdoServerKey = keyof Omit<typeof BdoServerName, 'parse'>;
 
-export function parse(bdoServerName: string) {
-    return BdoServerName[bdoServerName as BdoServerKey];
-}
+// export function parse(bdoServerName: string) {
+//     return BdoServerName[bdoServerName as BdoServerKey];
+// }
 
 // let test = new Map<string, string>([
 //     ['A', 'apple'],
