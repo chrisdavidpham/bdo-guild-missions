@@ -38,10 +38,6 @@ discordClient.on('ready', () => {
 });
 
 discordClient.on('messageCreate', async message => {
-    console.log(`message: ${message}`);
-    console.log(`message content: ${message.content}`);
-    console.log(`message channelid: ${message.channelId}`);
-
     if (message.channelId == process.env.CHANNEL_ID) {
         const regex = new RegExp('.*((kill.*bot)|(bot.*kill.*(you|it))).*');
         if (regex.exec(message.content)) {
@@ -51,8 +47,6 @@ discordClient.on('messageCreate', async message => {
 
         const commandRegex = new RegExp('^[!/$].*');
         const matches = commandRegex.exec(message.content)
-
-
         if (matches) {
             await message.reply({
                 content: 'It looks like you\'re trying to use the guild mission bot. Type /help for a list of commands',
@@ -80,4 +74,3 @@ discordClient.on('interactionCreate', async interaction => {
 });
 
 discordClient.login(process.env.BOT_TOKEN);
-
