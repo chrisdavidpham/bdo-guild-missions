@@ -1,8 +1,8 @@
-import { setupCommands } from 'bot-commands.js';
+const { BotCommands } = require('bot-commands.js');
 const { Client, Intents } = require('Discord.js');
 const discordClient = new  Client({ intents: Intents.FLAGS.GUILDS });
 
-setupCommands();
+BotCommands.setupCommands();
 
 discordClient.on('ready', () => {
     console.log(`Logged in as ${discordClient.user.tag}`);
