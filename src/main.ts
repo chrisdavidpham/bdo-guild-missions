@@ -1,11 +1,10 @@
 import { setupCommands } from './commands';
-import { Client, GatewayIntentBits } from 'discord.js';
+import { Client, GatewayIntentBits, Guild } from 'discord.js';
+import { GuildMissionCommand } from './types/guild-mission-command';
 
 const discordClient = new Client({
     intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent
+        GatewayIntentBits.Guilds
     ]
 });
 
@@ -16,40 +15,33 @@ discordClient.on('ready', () => {
 });
 
 discordClient.on('interactionCreate', async interaction => {
-    console.log(`isCommand? ${interaction.isCommand()}`);
-    console.log(`isMessageComponent? ${interaction.isMessageComponent()}`);
-
-    if (interaction.channelId != process.env.CHANNEL_ID) {
+    if (!interaction.isCommand() || interaction.channelId != process.env.CHANNEL_ID) {
         return;
     }
 
-    if (interaction.isMessageComponent()) {
-        const regex = new RegExp('.*((kill.*bot)|(bot.*kill.*(you|it))).*');
-        if (regex.exec(interaction.message.content)) {
-            await interaction.message.channel.send('noo don\'t kill me, I want to live!!');
-        }
-
-        const commandRegex = new RegExp('^[!/$].*');
-        const matches = commandRegex.exec(interaction.message.content)
-        if (matches) {
-            await interaction.reply({
-                content: 'It looks like you\'re trying to use the guild mission bot. Type /help for a list of commands',
-                ephemeral: true
-            });
-        }
-    }
-
-    if(!interaction.isCommand()) {
-        return;
-    } 
     switch(interaction.commandName)
     {
-        case 'help':
+        case GuildMissionCommand.Help:
             await interaction.reply({
-                content: 'I\'m still under development!',
+                content: 'I\'m still under development, but you can can start playing with /mission',
                 ephemeral: true
             });
+            break;
+        case GuildMissionCommand.Mission:
+            console.log('command options type: ' + typeof interaction.options);
+            console.log('options: ' + interaction.options);
+            console.log('options.data: ' + interaction.options.data);
+            await interaction.reply({
+                content: 'I received your request and options, but I\'m still under development and don\'t know what to do next!',
+                ephemeral: true
+            });
+            break;
         default:
+            console.log(`Invalid command: ${interaction.commandName}`);
+            await interaction.reply({
+                content: '??? - I don\'t recognize that command.',
+                ephemeral: true
+            });
             break;
     }
 });
