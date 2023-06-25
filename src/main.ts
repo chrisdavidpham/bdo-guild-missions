@@ -1,20 +1,11 @@
-import { setupCommands } from './commands';
-import { Client, GatewayIntentBits, Guild } from 'discord.js';
+import { DiscordClientService } from './services/discord-client-service';
 import { GuildMissionCommand } from './types/guild-mission-command';
 
-const discordClient = new Client({
-    intents: [
-        GatewayIntentBits.Guilds
-    ]
+DiscordClientService.client.on('ready', () => {
+    console.log(`Logged in as ${DiscordClientService.client.user?.tag}`);
 });
 
-setupCommands();
-
-discordClient.on('ready', () => {
-    console.log(`Logged in as ${discordClient.user?.tag}`);
-});
-
-discordClient.on('interactionCreate', async interaction => {
+DiscordClientService.client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand() || interaction.channelId != process.env.CHANNEL_ID) {
         return;
     }
@@ -23,7 +14,7 @@ discordClient.on('interactionCreate', async interaction => {
     {
         case GuildMissionCommand.Help:
             await interaction.reply({
-                content: 'I\'m still under development, but you can can start playing with /mission',
+                content: 'I\'m still under development, but you may explore my commands',
                 ephemeral: true
             });
             break;
@@ -46,4 +37,10 @@ discordClient.on('interactionCreate', async interaction => {
     }
 });
 
-discordClient.login(process.env.BOT_TOKEN);
+DiscordClientService.client.login(process.env.BOT_TOKEN);
+try {
+    DiscordClientService.setupCommands();
+}
+catch (error) {
+    console.log(error);
+}

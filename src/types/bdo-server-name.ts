@@ -1,10 +1,15 @@
-type GuildMissionsServerKey = keyof Omit<typeof GuildMissionServer, 'parse'>;
+type BdoServerKey = keyof Omit<typeof BdoServerName, 'parse'>;
 
 export function parse(bdoServerName: string) {
-    return GuildMissionServer[bdoServerName as GuildMissionsServerKey];
+    return BdoServerName[bdoServerName as BdoServerKey];
 }
 
-export enum GuildMissionServer {
+// let test = new Map<string, string>([
+//     ['A', 'apple'],
+//     ['B', 'banan']
+// ]);
+
+export enum BdoServerName {
     ars1 = 'NA_Arsha (PVP)',
     bal1 = 'NA_Balenos1',
     bal2 = 'NA_Balenos2',
@@ -40,12 +45,6 @@ export enum GuildMissionServer {
     rul4 = 'NA_Rulupee4',
     rul5 = 'NA_Rulupee5',
     rul6 = 'NA_Rulupee6',
-    rulu1 = 'NA_Rulupee1',
-    rulu2 = 'NA_Rulupee2',
-    rulu3 = 'NA_Rulupee3',
-    rulu4 = 'NA_Rulupee4',
-    rulu5 = 'NA_Rulupee5',
-    rulu6 = 'NA_Rulupee6',
     sea1 = 'NA_Season1 (Novice Only)',
     sea2 = 'NA_Season2',
     sea3 = 'NA_Season3',

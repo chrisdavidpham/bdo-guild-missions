@@ -1,4 +1,3 @@
-import { GuildMissionServer } from "./guild-mission-server";
 import { GuildMissionSize } from "./guild-mission-size";
 import { GuildMissionStatus } from "./guild-mission-status";
 
