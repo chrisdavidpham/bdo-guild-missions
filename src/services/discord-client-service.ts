@@ -11,7 +11,7 @@ export namespace DiscordClientService {
     export async function setupCommands() {
         console.log('Setting up commands...');
 
-        const GuildMissionCommandData = GuildMissionCommandBuilder.BuildAllCommands();
+        const GuildMissionCommandData = GuildMissionCommandBuilder.BuildCommands();
         const commandsRoute = Routes.applicationGuildCommands(process.env.CLIENT_ID as string, process.env.GUILD_ID as string);
         const commandsRequest = { body: GuildMissionCommandData } as RequestData;
 

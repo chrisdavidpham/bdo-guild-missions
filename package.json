@@ -1,6 +1,5 @@
 {
   "scripts": {
-    "test": "jasmine",
     "build": "tsc",
     "serve": "npm run build && heroku local"
   },
@@ -8,7 +7,6 @@
     "discord.js": "14.3.0"
   },
   "devDependencies": {
-    "jasmine": "^4.5.0",
     "typescript": "4.9.4"
   }
 }

@@ -5,7 +5,7 @@ import { MissionStatus } from '../types/mission-status';
 
 export abstract class GuildMissionCommandBuilder {
     public static BuildCommands() {
-        return new Array<SlashCommandBuilder>(
+        return new Array<SlashCommandBuilder | SlashCommandSubcommandsOnlyBuilder>(
             this.BuildMissionsCommand(),
             this.BuildMissionCommand()
         )
@@ -70,5 +70,5 @@ export abstract class GuildMissionCommandBuilder {
         return missionCommand;
     }
 
-    private readonly serverSizeOption = Object.values(MissionSize).map(s => { return { name: s, value: s } };
+    private readonly serverSizeOption = Object.values(MissionSize).map(s => { return { name: s, value: s } });
 }

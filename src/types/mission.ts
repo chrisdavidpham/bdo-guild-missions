@@ -6,28 +6,28 @@ export class Mission {
     private _size: MissionSize;
     private _objective: string;
     private _status: MissionStatus;
-    private _timeLimitHours: number;
+    // private _timeLimitHours: number;
 
     constructor(server: string, size: MissionSize, objective: string) {
         this._server = server;
         this._size = size;
         this._objective = objective;
-        this._status = MissionStatus.Accepted;
+        this._status = MissionStatus.Started;
     }
 
-    public get server {
+    public get server() {
         return this._server;
     }
 
-    public get size {
+    public get size() {
         return this._size;
     }
 
-    public get objective {
+    public get objective() {
         return this._objective;
     }
 
-    public get status {
+    public get status() {
         return this._status;
     }
 
